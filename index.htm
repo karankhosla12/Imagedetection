@@ -51,6 +51,14 @@
             font-size: 16px;
             color: #2e7d32;
             display: none;
+            text-align: left;
+        }
+        ul {
+            padding: 0;
+            list-style-type: none;
+        }
+        ul li {
+            margin: 5px 0;
         }
     </style>
 </head>
@@ -96,7 +104,8 @@
 
                 const result = await response.json();
                 if (response.ok) {
-                    responseDiv.textContent = `Response: ${JSON.stringify(result)}`;
+                    const listItems = result.map(item => `<li>${item.label}: ${item.score.toFixed(2)}</li>`).join('');
+                    responseDiv.innerHTML = `<ul>${listItems}</ul>`;
                     responseDiv.style.color = "#2e7d32";
                 } else {
                     responseDiv.textContent = "An error occurred: " + JSON.stringify(result);
