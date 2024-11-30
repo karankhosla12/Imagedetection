@@ -84,7 +84,7 @@
 
             try {
                 const response = await fetch(
-                    "https://api-inference.huggingface.co/models/fxmarty/tiny-doc-qa-vision-encoder-decoder",
+                    "https://api-inference.huggingface.co/models/microsoft/resnet-50",
                     {
                         method: "POST",
                         headers: {
@@ -96,8 +96,7 @@
 
                 const result = await response.json();
                 if (response.ok) {
-                    const answer = result.answers[0];
-                    responseDiv.textContent = `Answer: ${answer}`;
+                    responseDiv.textContent = `Response: ${JSON.stringify(result)}`;
                     responseDiv.style.color = "#2e7d32";
                 } else {
                     responseDiv.textContent = "An error occurred: " + JSON.stringify(result);
